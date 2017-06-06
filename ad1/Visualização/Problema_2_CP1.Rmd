@@ -5,7 +5,7 @@ date: "5 de junho de 2017"
 output: html_document
 ---
 
-A partir das atividades propostas no problema um surgiu a cursiosidade de saber como é a representação do episódio mais avaliado de cada série com relação a avaliação dos usuários. A partir disso foi gerado o grágico abaixo.
+Diante das atividades propostas no problema um, surgiu a cursiosidade de saber como é a representação do episódio mais avaliado de cada série com relação a avaliação dos usuários. A partir disso foi gerado o gráfico abaixo:
 
 
 ```{r setup, include=FALSE}
@@ -34,7 +34,7 @@ P2CP1 <- highchart() %>%
 P2CP1
 ```
 
-A partir de uma observação no gráfico foi possível constatar que os episódios mais votados tendem a ter uma boa avaliação e que é possível visualizar qual foi o episódio e série de cada ponto.
+A partir de uma observação no gráfico foi possível constatar que os episódios mais votados tendem a ter uma boa avaliação e que é possível visualizar qual foi o episódio e série de cada ponto descrito no gráfico.
 ```{r pressure, echo=FALSE}
 
 ```

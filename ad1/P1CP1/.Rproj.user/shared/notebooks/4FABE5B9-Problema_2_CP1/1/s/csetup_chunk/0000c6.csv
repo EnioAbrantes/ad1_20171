@@ -1,0 +1,12 @@
+"0","highchart() %>%
+  hc_title(text = ""Episódio mais avaliado de cada série"") %>% 
+  hc_add_series_scatter(dados$UserRating,dados$UserVotes, dados$UserVotes, dados$series_name, nome_serie = dados$series_name, episodio = dados$season_ep, temporada = dados$season)%>%
+  hc_tooltip(formatter = JS(""function(){
+                            return ('Nome da série: ' + this.point.nome_serie + ' <br> Avaliação dos usuários: ' + this.x + ' <br> Número de votos: ' + this.y + ' <br> Temporada x Episódio: ' + this.point.temporada + 'x' + this.point.episodio)
+                            }"")
+  )%>% hc_xAxis(title = list(text = ""Avaliação dos usuários"")) %>%
+   hc_yAxis(title = list(text = ""Quantidade de votos""))
+"
+"2","'hc_add_series_scatter' is deprecated.
+Use 'hc_add_series' instead.
+See help(""Deprecated"")"

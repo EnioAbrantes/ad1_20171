@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Problema_2_CP1\"\nauthor: \"Ênio Abrantes\"\ndate: \"5 de junho de 2017\"\noutput: html_document\n---\n\n```{r setup, include=FALSE}\nlibrary(tidyverse, warn.conflicts = FALSE) \nlibrary(htmlwidgets)\nlibrary(dygraphs)\nlibrary(plotly)\n\n# Leitura dos dados de todas as séries obtida pelo IMDB.\ndados <- read_csv(file = \"../series_from_imdb.csv\") %>% filter(series_name %in% c(\"Narcos\", \"Sherlock\", \"Stranger Things\", \"Breaking Bad\"))\n\nlibrary(magrittr)\nlibrary(highcharter)\n\n#highchart() %>% \n#  hc_title(text = \"Exemple for CP1\") %>% \n#  hc_add_series_scatter(dados$UserRating, dados$season_ep,\n#                        dados$UserVotes)\n\ndt <- dados %>% \n  mutate(x = series_name, y = UserRating, z = UserVotes)\n\nds <- list_parse(dt)\n\nhighchart() %>% \n  hc_title(text = \"Scatter chart with size and color\") %>% \n  hc_add_series(data = ds, type = \"bubble\") %>%\n  hc_tooltip(formatter = JS(\"function(){\n                            return ('y: ' + this.y + ' <br> Number of gears: ' + this.point.gear)\n                            }\")\n  )\n\np = dados %>% \n  ggplot(aes(x = series_ep, \n             y = UserRating, \n             colour = as.character(season), \n             label = Episode)) + \n  geom_line() \np\nggplotly(p)\n\nplot_ly(data = dados, \n        x = ~ series_ep, \n        y = ~ UserRating, \n        name = \"avaliacoes\",\n        color = ~as.character(season), \n        text = ~Episode) %>% \n  add_trace(y = ~ UserRating, \n            type = \"scatter\",\n            mode = \"lines+markers\",\n            color = ~as.character(season),\n            line = list(width = 1), \n            hoverinfo = \"text\")\n\n```\n\n\n```{r}\n```\n\n```{r pressure, echo=FALSE}\n\n```\n\n",
+    "created" : 1496668448349.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3398887521",
+    "id" : "1728E10E",
+    "lastKnownWriteTime" : 1496685188,
+    "last_content_update" : 1496685894518,
+    "path" : "~/ad1/Visualização/Problema_2_CP1.Rmd",
+    "project_path" : "Problema_2_CP1.Rmd",
+    "properties" : {
+        "last_setup_crc32" : "A1F59CBFbb674b5e",
+        "tempName" : "Untitled3"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

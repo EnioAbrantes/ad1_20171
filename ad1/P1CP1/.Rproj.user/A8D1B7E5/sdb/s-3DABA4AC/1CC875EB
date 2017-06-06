@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "---\ntitle: \"Problema_2_CP1\"\nauthor: \"Ênio Abrantes\"\ndate: \"5 de junho de 2017\"\noutput: html_document\n---\n\nA partir das atividades propostas no problema um surgiu a cursiosidade de saber como é a representação do episódio mais avaliado de cada série com relação a avaliação dos usuários. A partir disso foi gerado o grágico abaixo.\n\n\n```{r setup, include=FALSE}\nlibrary(tidyverse, warn.conflicts = FALSE) \nlibrary(magrittr)\nlibrary(highcharter)\n\n# Leitura dos dados de todas as séries obtida pelo IMDB.\n  dados <- read_csv(file = \"../series_from_imdb.csv\")  %>%\n    group_by(series_name) %>% filter(max(UserVotes)== UserVotes)\n\nP2CP1 <- highchart() %>%\n  hc_title(text = \"Episódio mais avaliado de cada série\") %>% \n  hc_add_series_scatter(dados$UserRating,dados$UserVotes, dados$UserVotes, dados$series_name, nome_serie = dados$series_name, episodio = dados$season_ep, temporada = dados$season)%>%\n  hc_tooltip(formatter = JS(\"function(){\n                            return ('Nome da série: ' + this.point.nome_serie + ' <br> Avaliação dos usuários: ' + this.x + ' <br> Quantidade de votos: ' + this.y + ' <br> Temporada x Episódio: ' + this.point.temporada + 'x' + this.point.episodio)\n                            }\")\n  )%>% hc_xAxis(title = list(text = \"Avaliação dos usuários\")) %>%\n   hc_yAxis(title = list(text = \"Quantidade de votos\"))\n\n\n```\n\n\n```{r}\nP2CP1\n```\n\nA partir de uma observação no gráfico foi possível constatar que os episódios mais votados tendem a ter uma boa avaliação e que é possível visualizar qual foi o episódio e série de cada ponto.\n```{r pressure, echo=FALSE}\n\n```\n\n",
+    "created" : 1496686545380.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "855703793",
+    "id" : "1CC875EB",
+    "lastKnownWriteTime" : 1496709126,
+    "last_content_update" : 1496709126717,
+    "path" : "~/ad1/Visualização/Problema_2_CP1.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "last_setup_crc32" : "8EDC8FD2cfb53543"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,0 +1,41 @@
+---
+title: "Problema_2_CP1"
+author: "Ênio Abrantes"
+date: "5 de junho de 2017"
+output: html_document
+---
+
+A partir das atividades propostas no problema um surgiu a cursiosidade de saber como é a representação do episódio mais avaliado de cada série com relação a avaliação dos usuários. A partir disso foi gerado o grágico abaixo.
+
+
+```{r setup, include=FALSE}
+library(tidyverse, warn.conflicts = FALSE) 
+library(magrittr)
+library(highcharter)
+
+# Leitura dos dados de todas as séries obtida pelo IMDB.
+  dados <- read_csv(file = "../series_from_imdb.csv")  %>%
+    group_by(series_name) %>% filter(max(UserVotes)== UserVotes)
+
+P2CP1 <- highchart() %>%
+  hc_title(text = "Episódio mais avaliado de cada série") %>% 
+  hc_add_series_scatter(dados$UserRating,dados$UserVotes, dados$UserVotes, dados$series_name, nome_serie = dados$series_name, episodio = dados$season_ep, temporada = dados$season)%>%
+  hc_tooltip(formatter = JS("function(){
+                            return ('Nome da série: ' + this.point.nome_serie + ' <br> Avaliação dos usuários: ' + this.x + ' <br> Quantidade de votos: ' + this.y + ' <br> Temporada x Episódio: ' + this.point.temporada + 'x' + this.point.episodio)
+                            }")
+  )%>% hc_xAxis(title = list(text = "Avaliação dos usuários")) %>%
+   hc_yAxis(title = list(text = "Quantidade de votos"))
+
+
+```
+
+
+```{r}
+P2CP1
+```
+
+A partir de uma observação no gráfico foi possível constatar que os episódios mais votados tendem a ter uma boa avaliação e que é possível visualizar qual foi o episódio e série de cada ponto.
+```{r pressure, echo=FALSE}
+
+```
+

@@ -1,0 +1,116 @@
+---
+title: "Problema 1 Checkpoint 4"
+author: "Ênio Abrantes"
+date: "29 de maio de 2017"
+output: html_document
+---
+```{r}
+library(tidyverse, warn.conflicts = FALSE) 
+library(calibrate)
+
+# Leitura dos dados de todas as séries obtida pelo IMDB.
+dados <- read_csv(file = "../series_from_imdb.csv")
+
+```
+
+1- Qual série teve a melhor estreia?(Série com melhor avaliação no seu episódio piloto).
+
+Para responder essa pergunta é importante primeiramente saber a importância do episódio piloto.
+O episódio piloto funciona quase como um final de semana de estreia para os filmes, ele é crucial para conseguir cativar a audiência e, em alguns casos, até mesmo conquistar executivos de alguma rede. Algumas vezes o piloto é produzido como forma de aprovar uma série, afinal é muito mais barato investir em um episódio e “sentir” a série do que enviá-la para produção e descobrir que terá de ser cancelada por falta de interesse da audiência.
+
+Agora que sabemos a importância do episódio piloto precisamos saber quais dados são necessários para que se possa obter o resultado.
+Essa análise fez uso de um filtro de todos os dados em busca das informações referêntes ao nome das séries("series_name"), ao primeiro episódio de cada série("series_ep == "1"") e a avalição dos usuários referentes a cada episódio(UserRating).
+A partir de todas a informações coletadas foi possível gerar o gráfico abaixo.
+
+```{r}
+
+dados %>% filter(dados$series_ep == "1") %>%
+  mutate(season = as.character(season)) %>% 
+  ggplot(aes(x = series_name, y = UserRating)) %>% + 
+  geom_line() + 
+  geom_point() +
+  stat_summary(geom="line", aes(group=1))  + 
+  stat_summary(geom="point") + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 6)) 
+```
+
+Ao dar uma boa observada no gráfico acima é possível notar que uma série se destaca, esse série é Mr. Robot com avaliação de 9.3, sendo ela considera a série com o melhor episódio piloto segundo o IMDB.
+
+1.1 Como foi dito anteriormente, o episódio piloto acaba tendo um papel de termômetro para as emissoras, a partir disso surge um novo questionamento. A série Mr Robot ao longo de seus episódios acabou realmente se destacando entre as demais séries?
+
+Para responder a essa nova pergunta precisamos saber quais dados são necessários para que se possa obter o resultado. Essa análise fez uso de um filtro de todos os dados em busca das informações referêntes ao nome das séries("series_name"), a mediana de todos os episódios de cada série(fun.y=median) e a avalição dos usuários referentes a cada mediana(UserRating).
+
+Observando atentamente o gráfico abaixo que mostra a mediana de todas séries baseado nas avaliações dos usuários e uma tabela ilustrando de uma outra maneiras os 8 primeiros colocados podemos deduzir que Mr robot não decepcionou, ficando na setima posição com mediana de 8.80.
+
+```{r}
+dados %>%
+  mutate(season = as.character(season))   %>%
+  ggplot(aes(x = series_name, y = UserRating)) +
+  stat_summary(fun.y=median, geom="line", aes(group=1))  + 
+  stat_summary(fun.y=median, geom="point") +
+  geom_text(aes(label= ""),hjust=0, vjust=0) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 6)) +
+  coord_cartesian(ylim= c(7,9.0))
+
+table <- matrix(c("Sense8", "9.00","Sherlock","9.00","Game of Thrones","8.95", "Daredevil", "8.95", "Stranger Things", "8.95", "Breaking Bad", "8.90", "Mr Robot", "8.80", "Narcos", "8.70"),ncol=2,byrow=TRUE)
+colnames(table) <- c("Série", "Mediana")
+rownames(table) <- c("1°","2°","3°","4°" ,"5°" ,"6°" , "7°","8°")
+table <- as.table(table)
+table
+
+
+
+```
+Conclusão: Como Mr Robot ficou na sétima posição dentre 31 séries eu avalio que a série teve sim destaque, a diferença de apenas 0.2 na mediana entre ela e o primeiro lugar reforça esse pensamento. Para finalizar é possível concluir(com algumas exceções) que as séries que tem um bom episódio piloto tendem a serem boas séries, a exemplo de Mr Robot, Game of Thrones e Breaking bad. Sense8 é um exemplo de uma exceção, ela teve o segundo pior piloto mas soube se aprimorar ao ponto de conseguir ter a melhor mediana dentre as 31 contidas no IMDB.
+ 
+ 
+ 
+2 - Levando em consideração que o número de votos para cada episódio esteja fortemente ligado ao número de seguidores, qual série possui mais seguidores?
+
+
+Agora precisamos saber quais dados são necessários para que se possa obter o resultado. Essa análise fez uso de um filtro de todos os dados em busca das informações referêntes ao nome das séries("series_name"), a mediana da quantidade de votos dos usuários de todas as séries(fun.y=median) e a quantidade de votos para cada série(UserVotes).
+
+Para respondermos essa pergunta é importante observarmos o gráfico abaixo que representa a mediana de cada série com relação ao número de votos dos usuários, nele da pra notar com facilidade que a série Sherlock é a mais avaliada pelos usuários, sendo ela então considerada como a série com maior número de seguidores, levando a crer que essa série seja ótima.
+
+```{r}
+dados %>%
+  mutate(season = as.character(season))   %>%
+  ggplot(aes(x = series_name, y = UserVotes)) +
+  stat_summary(fun.y=median, geom="line", aes(group=1))  + 
+  stat_summary(fun.y=median, geom="point") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 6))
+
+
+```
+
+
+Agora que sabemos que Game of Thrones, Sherlock e Black Mirror são as que possuem mais votos dos usuários por episódio, seria interessante saber também quais foram os principais episódios que fizeram com que essas séries chegassem nas primeiras posições.
+
+2.2 Qual foi o episódio mais representativo com relação ao número de votos para cada uma das 3 séries com maior número de seguidores? Ele condiz com a média?
+
+Agora precisamos saber quais dados são necessários para que se possa obter o resultado. Essa análise fez uso de um filtro de todos os dados obtidos a partir seguintes séries("Sherlock", "Game of Thrones" e "Black Mirror"") em busca das informações referêntes ao nome das séries("series_name"), o valor do número de votos do episódio com o maior número de votos de cada série(fun.y=max) e a quantidade de votos para cada série(UserVotes).
+
+```{r}
+options("scipen"=10)
+dados %>% filter(series_name %in% c("Sherlock", "Game of Thrones", "Black Mirror")) %>%
+  mutate(season = as.character(season))   %>%
+  ggplot(aes(x = series_name, y = UserVotes)) +
+  stat_summary(fun.y=max, geom="line", aes(group=1))  + 
+  stat_summary(fun.y=max, geom="point") 
+
+
+desvioGOT <- dados %>% filter(series_name %in% c("Game of Thrones"))
+# Calculo do valor da média para a série Game of Thrones.
+mean(desvioGOT$UserVotes)
+# Calculo do valor do desvio padrão para a série Game of Thrones.
+sd(desvioGOT$UserVotes)
+
+desvioSherlock <- dados %>% filter(series_name %in% c("Sherlock"))
+# Calculo do valor da média para a série Sherlock.
+mean(desvioSherlock$UserVotes)
+# Calculo do valor do desvio padrão para a série Sherlock.
+sd(desvioSherlock$UserVotes)
+
+```
+
+Conclusão: É possível ver que o episódio mais representativo acabou sendo o de Game of Thrones onde conseguiu chegar na incrível marca superior a 130 mil votos, superando em mais de 80 mil votos a segunda colocada Sherlock, que por sua vez foi pouco superior a Black Mirror, o fato de Game of Thrones ser bem superior a Sherlock nesse quesito dá a entender que ele tem uma mediana de votos superior a de Sherlock certo? Errado. Isso ocorre pelo alto desvio padrão que ocorre em Game of Thrones(20226.79), onde mesmo tendo uma quantidade de votos tão expressiva em um único episódio não conseguiu manter o padrão fazendo com que a mediana fosse inferior a de Sherlock que como consequência tem um desvio padrão bem menor(6023.753). É importante mencionar sobre a média entre as duas séries e como um episódio tão impactante fez com que a média de Game of Thrones fosse superior a Sherlock, por isso a mediana é importante para esse tipo de análise, fazendo com que os dados sejam mais justos e condizentes com a realidade. Para concluir, esse episódio acaba não condizendo com a realidade visto que sua média é bem inferior ao número de votos observado no episódio em questão.

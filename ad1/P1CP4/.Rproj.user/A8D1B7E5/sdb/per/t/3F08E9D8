@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(tidyverse) \nlibrary(calibrate)\n# Leitura dos dados de todas as séries obtida pelo IMDB.\ndados <- read_csv(file = \"../series_from_imdb.csv\")\n\n\n\n#1- Qual série teve a melhor estreia?(Série com melhor avaliação no seu episódio piloto).\n\n# Para responder essa pergunta é importante primeiramente saber a importância do episódio piloto.\n# O episódio piloto funciona quase como um final de semana de estreia para os filmes, ele é crucial para conseguir cativar a audiência e, em alguns casos, até mesmo conquistar executivos de alguma rede. Algumas vezes o piloto é produzido como forma de aprovar uma série, afinal é muito mais barato investir em um episódio e “sentir” a série do que enviá-la para produção e descobrir que terá de ser cancelada por falta de interesse da audiência.\n\n# Agora que sabemos a importância do episódio piloto precisamos saber quais dados são necessários para que se possa obter o resultado.\n# Essa análise fez uso de um filto de todos os dados em busca das informações referêntes ao nome das séries(\"series_name\"), ao primeiro episódio de cada série(\"series_ep == \"1\"\") e a avalição dos usuários referentes a cada episódio(UserRating).\n# A partir de todas a informações coletadas foi possível gerar o gráfico abaixo.\n\ndados %>% filter(dados$series_ep == \"1\") %>%\n  mutate(season = as.character(season)) %>% \n  ggplot(aes(x = series_name, y = UserRating)) %>% + \n  geom_line() + \n  geom_point() +\n  stat_summary(geom=\"line\", aes(group=1))  + \n  stat_summary(geom=\"point\") + \n  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 6)) \n\n# Ao dar uma boa observada no gráfico é possível notar que uma série se destrada, esse série é Mr. Robot  com avaliação de 9.3, sendo ela considera a com melhor episódio piloto segundo o IMDB.\n# Como foi dito anteriormente, o episódio piloto acaba tendo um papel de termômetro para as emissoras, a partir disso surge um novo questionamento, a série Mr. Robot acabou realmente se destacando entre as demais séries?\n\n# Para responder esse nova pergunta \n\n\ndados %>%\n  mutate(season = as.character(season))   %>%\n  ggplot(aes(x = series_name, y = UserRating)) +\n  stat_summary(fun.y=median, geom=\"line\", aes(group=1))  + \n  stat_summary(fun.y=median, geom=\"point\") +\n  geom_text(aes(label= \"\"),hjust=0, vjust=0) +\n  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 6)) +\n  coord_cartesian(ylim= c(7,9.0))\n\n```\n\ngfgf\ngfgfgf\ngfgf\n    gfgf\n    Série    |  Mediana\n    \n```{r}\n\n",
+    "created" : 1496008178706.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2653524649",
+    "id" : "3F08E9D8",
+    "lastKnownWriteTime" : 1496086580,
+    "last_content_update" : 1496086580229,
+    "path" : "~/ad1/P1CP4/P1CP4.R",
+    "project_path" : "P1CP4.R",
+    "properties" : {
+        "notebook_format" : "html_document"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

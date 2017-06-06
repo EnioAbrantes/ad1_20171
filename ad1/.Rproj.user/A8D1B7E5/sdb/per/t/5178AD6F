@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(tidyverse) \n\n# Leitura dos dados das séries.\ndados <- read_csv(file = \"../series_from_imdb.csv\")\n\n\n#1- Qual série é tida como o maior fiasco?\n#(Um fiasco nessa questão significa que a série começou bem mais que a medida\n#que as temporadas foram se passando a qualidade foi diminuindo)\n\n# Gráfico 1: Descreve a relação de cada temporada da série Narcos com a avaliação do usuários.\ndados %>% \n  mutate(season = as.character(season)) %>% \n  ggplot(aes(x = season, y = UserRating, color = season)) + \n  geom_boxplot() +\n  geom_point() + \n  stat_summary(fun.y=median, geom=\"line\", aes(group=1))  + \n  stat_summary(fun.y=median, geom=\"point\")",
+    "created" : 1496007266976.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2605127985",
+    "id" : "5178AD6F",
+    "lastKnownWriteTime" : 1496008091,
+    "last_content_update" : 1496008091073,
+    "path" : "~/ad1/P1CP4/P1CP4.R",
+    "project_path" : "P1CP4/P1CP4.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<script src="lib/htmlwidgets-0.8/htmlwidgets.js"></script>
+<script src="lib/jquery-1.11.1/jquery.min.js"></script>
+<script src="lib/proj4js-2.3.15/proj4.js"></script>
+<link href="lib/highcharts-5.0.6/css/motion.css" rel="stylesheet" />
+<script src="lib/highcharts-5.0.6/highstock.js"></script>
+<script src="lib/highcharts-5.0.6/highcharts-3d.js"></script>
+<script src="lib/highcharts-5.0.6/highcharts-more.js"></script>
+<script src="lib/highcharts-5.0.6/modules/annotations.js"></script>
+<script src="lib/highcharts-5.0.6/modules/broken-axis.js"></script>
+<script src="lib/highcharts-5.0.6/modules/data.js"></script>
+<script src="lib/highcharts-5.0.6/modules/drilldown.js"></script>
+<script src="lib/highcharts-5.0.6/modules/exporting.js"></script>
+<script src="lib/highcharts-5.0.6/modules/funnel.js"></script>
+<script src="lib/highcharts-5.0.6/modules/heatmap.js"></script>
+<script src="lib/highcharts-5.0.6/modules/map.js"></script>
+<script src="lib/highcharts-5.0.6/modules/no-data-to-display.js"></script>
+<script src="lib/highcharts-5.0.6/modules/offline-exporting.js"></script>
+<script src="lib/highcharts-5.0.6/modules/solid-gauge.js"></script>
+<script src="lib/highcharts-5.0.6/modules/treemap.js"></script>
+<script src="lib/highcharts-5.0.6/plugins/annotations.js"></script>
+<script src="lib/highcharts-5.0.6/plugins/draggable-legend.js"></script>
+<script src="lib/highcharts-5.0.6/plugins/draggable-points.js"></script>
+<script src="lib/highcharts-5.0.6/plugins/export-csv.js"></script>
+<script src="lib/highcharts-5.0.6/plugins/grouped-categories.js"></script>
+<script src="lib/highcharts-5.0.6/plugins/motion.js"></script>
+<script src="lib/highcharts-5.0.6/plugins/pattern-fill-v2.js"></script>
+<script src="lib/highcharts-5.0.6/plugins/tooltip-delay.js"></script>
+<script src="lib/highcharts-5.0.6/custom/reset.js"></script>
+<script src="lib/highcharts-5.0.6/custom/symbols-extra.js"></script>
+<script src="lib/highcharts-5.0.6/custom/text-symbols.js"></script>
+<link href="lib/fontawesome-4.5.0/font-awesome.min.css" rel="stylesheet" />
+<link href="lib/htmlwdgtgrid-1/htmlwdgtgrid.css" rel="stylesheet" />
+<script src="lib/highchart-binding-0.5.0/highchart.js"></script>
+
+</head>
+<body style="background-color:white;">
+<!-- htmlwidget-container-begin -->
+<div id="htmlwidget-93b936e04ba3f4e651be" style="width:100%;height:500px;" class="highchart html-widget"></div>
+<!-- htmlwidget-container-end -->
+<script type="application/json" data-for="htmlwidget-93b936e04ba3f4e651be">{"x":{"hc_opts":{"title":{"text":"Episódio mais avaliado de cada série"},"yAxis":{"title":{"text":"Quantidade de votos"}},"credits":{"enabled":false},"exporting":{"enabled":false},"plotOptions":{"series":{"turboThreshold":0},"treemap":{"layoutAlgorithm":"squarified"},"bubble":{"minSize":5,"maxSize":25}},"annotationsOptions":{"enabledButtons":false},"tooltip":{"delayForDisplay":10,"formatter":"function(){\n                            return ('Nome da série: ' + this.point.nome_serie + ' <br> Avaliação dos usuários: ' + this.x + ' <br> Número de votos: ' + this.y + ' <br> Temporada x Episódio: ' + this.point.temporada + 'x' + this.point.episodio)\n                            }"},"series":[{"data":[{"x":9.4,"y":3692,"z":3692,"valuecolor":"13 Reasons Why","color":"#440154","nome_serie":"13 Reasons Why","episodio":13,"temporada":1},{"x":9.6,"y":2226,"z":2226,"valuecolor":"How to Get Away with Murder","color":"#21908C","nome_serie":"How to Get Away with Murder","episodio":9,"temporada":2},{"x":9.3,"y":9764,"z":9764,"valuecolor":"Mr Robot","color":"#3E9B7E","nome_serie":"Mr Robot","episodio":1,"temporada":1},{"x":7.5,"y":3078,"z":3078,"valuecolor":"Sense8","color":"#96BE55","nome_serie":"Sense8","episodio":1,"temporada":1},{"x":9.6,"y":27731,"z":27731,"valuecolor":"Sherlock","color":"#A5C44E","nome_serie":"Sherlock","episodio":1,"temporada":2},{"x":8.1,"y":15008,"z":15008,"valuecolor":"Black Mirror","color":"#3C1D5F","nome_serie":"Black Mirror","episodio":1,"temporada":1},{"x":10,"y":87001,"z":87001,"valuecolor":"Breaking Bad","color":"#3A2762","nome_serie":"Breaking Bad","episodio":14,"temporada":5},{"x":4.8,"y":13936,"z":13936,"valuecolor":"Dexter","color":"#363A6A","nome_serie":"Dexter","episodio":12,"temporada":8},{"x":9.6,"y":6569,"z":6569,"valuecolor":"House of Cards","color":"#257C84","nome_serie":"House of Cards","episodio":1,"temporada":2},{"x":8.6,"y":8721,"z":8721,"valuecolor":"Stranger Things","color":"#B3CA47","nome_serie":"Stranger Things","episodio":1,"temporada":1},{"x":9.7,"y":9722,"z":9722,"valuecolor":"Arrow","color":"#3F145B","nome_serie":"Arrow","episodio":9,"temporada":3},{"x":8.1,"y":8283,"z":8283,"valuecolor":"Gotham","color":"#2C6079","nome_serie":"Gotham","episodio":1,"temporada":1},{"x":6.7,"y":2076,"z":2076,"valuecolor":"Grey’s Anatomy","color":"#2A697D","nome_serie":"Grey’s Anatomy","episodio":18,"temporada":7},{"x":5.7,"y":10145,"z":10145,"valuecolor":"The 100","color":"#C2CF40","nome_serie":"The 100","episodio":7,"temporada":3},{"x":7.6,"y":5047,"z":5047,"valuecolor":"Agents of S.H.I.E.L.D.","color":"#410A57","nome_serie":"Agents of S.H.I.E.L.D.","episodio":1,"temporada":1},{"x":8.6,"y":7639,"z":7639,"valuecolor":"Daredevil","color":"#383066","nome_serie":"Daredevil","episodio":1,"temporada":1},{"x":9.7,"y":11607,"z":11607,"valuecolor":"Flash","color":"#33436E","nome_serie":"Flash","episodio":15,"temporada":1},{"x":8.4,"y":2736,"z":2736,"valuecolor":"Once Upon a Time","color":"#5BA770","nome_serie":"Once Upon a Time","episodio":1,"temporada":1},{"x":9.7,"y":6383,"z":6383,"valuecolor":"Friends","color":"#314D71","nome_serie":"Friends","episodio":42,"temporada":1},{"x":9,"y":4000,"z":4000,"valuecolor":"Prison Break","color":"#79B262","nome_serie":"Prison Break","episodio":1,"temporada":1},{"x":8.4,"y":2770,"z":2770,"valuecolor":"The Blacklist","color":"#D1D539","nome_serie":"The Blacklist","episodio":1,"temporada":1},{"x":9.7,"y":5067,"z":5067,"valuecolor":"Homeland","color":"#287380","nome_serie":"Homeland","episodio":9,"temporada":4},{"x":5.7,"y":12266,"z":12266,"valuecolor":"How I Met Your Mother","color":"#238688","nome_serie":"How I Met Your Mother","episodio":24,"temporada":9},{"x":8.2,"y":3970,"z":3970,"valuecolor":"The Simpsons","color":"#DFDB32","nome_serie":"The Simpsons","episodio":1,"temporada":1},{"x":9.9,"y":137670,"z":137670,"valuecolor":"Game of Thrones","color":"#2F5675","nome_serie":"Game of Thrones","episodio":9,"temporada":6},{"x":8.3,"y":1745,"z":1745,"valuecolor":"Orphan Black","color":"#6AAD69","nome_serie":"Orphan Black","episodio":1,"temporada":1},{"x":7.4,"y":825,"z":825,"valuecolor":"Scandal","color":"#87B85B","nome_serie":"Scandal","episodio":1,"temporada":1},{"x":9.1,"y":30555,"z":30555,"valuecolor":"The Walking Dead","color":"#EEE12B","nome_serie":"The Walking Dead","episodio":1,"temporada":7},{"x":9.5,"y":4010,"z":4010,"valuecolor":"Modern Family","color":"#2F9585","nome_serie":"Modern Family","episodio":16,"temporada":6},{"x":8.9,"y":4537,"z":4537,"valuecolor":"Narcos","color":"#4DA177","nome_serie":"Narcos","episodio":1,"temporada":1},{"x":9.6,"y":4898,"z":4898,"valuecolor":"Vikings","color":"#FDE725","nome_serie":"Vikings","episodio":15,"temporada":4}],"type":"bubble","showInLegend":false,"dataLabels":{"enabled":false}}],"xAxis":{"title":{"text":"Avaliação dos usuários"}}},"theme":{"chart":{"backgroundColor":"transparent"}},"conf_opts":{"global":{"Date":null,"VMLRadialGradientURL":"http =//code.highcharts.com/list(version)/gfx/vml-radial-gradient.png","canvasToolsURL":"http =//code.highcharts.com/list(version)/modules/canvas-tools.js","getTimezoneOffset":null,"timezoneOffset":0,"useUTC":true},"lang":{"contextButtonTitle":"Chart context menu","decimalPoint":".","downloadJPEG":"Download JPEG image","downloadPDF":"Download PDF document","downloadPNG":"Download PNG image","downloadSVG":"Download SVG vector image","drillUpText":"Back to {series.name}","invalidDate":null,"loading":"Loading...","months":["January","February","March","April","May","June","July","August","September","October","November","December"],"noData":"No data to display","numericSymbols":["k","M","G","T","P","E"],"printChart":"Print chart","resetZoom":"Reset zoom","resetZoomTitle":"Reset zoom level 1:1","shortMonths":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"thousandsSep":" ","weekdays":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]}},"type":"chart","fonts":[],"debug":false},"evals":["hc_opts.tooltip.formatter"],"jsHooks":[]}</script>
+<!-- htmlwidget-sizing-policy-base64 PHNjcmlwdCB0eXBlPSJhcHBsaWNhdGlvbi9odG1sd2lkZ2V0LXNpemluZyIgZGF0YS1mb3I9Imh0bWx3aWRnZXQtOTNiOTM2ZTA0YmEzZjRlNjUxYmUiPnsidmlld2VyIjp7IndpZHRoIjoiYXV0byIsImhlaWdodCI6MzUwLCJwYWRkaW5nIjoxNSwiZmlsbCI6dHJ1ZX0sImJyb3dzZXIiOnsid2lkdGgiOiJhdXRvIiwiaGVpZ2h0Ijo1MDAsInBhZGRpbmciOjQwLCJmaWxsIjpmYWxzZX19PC9zY3JpcHQ+ -->
+</body>
+</html>

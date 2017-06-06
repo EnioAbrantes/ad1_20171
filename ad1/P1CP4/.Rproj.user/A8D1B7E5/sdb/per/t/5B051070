@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "fdddfdfdfd ",
+    "created" : 1496085541525.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4048869543",
+    "id" : "5B051070",
+    "lastKnownWriteTime" : 1496086213,
+    "last_content_update" : 1496086213781,
+    "path" : "~/ad1/P1CP4/teste.R",
+    "project_path" : "teste.R",
+    "properties" : {
+        "notebook_format" : "html_document",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,12 @@
+"0","p = dados %>% 
+  ggplot(aes(x = series_ep, 
+             y = UserRating, 
+             colour = as.character(season), 
+             label = Episode)) + 
+  geom_line() 
+p
+ggplotly(p)
+"
+"2","We recommend that you use the dev version of ggplot2 with `ggplotly()`
+Install it with: `devtools::install_github('hadley/ggplot2')`
+"
